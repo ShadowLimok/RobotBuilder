@@ -14,6 +14,7 @@ public class RobotModel
 
     public event System.Action OnChanged;
     public event System.Action OnColorChanged;
+    public event System.Action OnTestAction;
 
     public void SetHead(RobotPartData data) { CurrentHead = data; OnChanged?.Invoke(); }
     public void SetBody(RobotPartData data) { CurrentBody = data; OnChanged?.Invoke(); }
@@ -22,5 +23,7 @@ public class RobotModel
     public void SetHeadColor(Color color) { HeadColor = color; OnColorChanged?.Invoke(); }
     public void SetBodyColor(Color color) { BodyColor = color; OnColorChanged?.Invoke(); }
     public void SetLegsColor(Color color) { LegsColor = color; OnColorChanged?.Invoke(); }
+
+    public void TriggerTest() => OnTestAction?.Invoke();
 }
 

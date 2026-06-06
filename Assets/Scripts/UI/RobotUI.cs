@@ -1,11 +1,14 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RobotUI : MonoBehaviour
 {
     [SerializeField] private RobotBuilder _builder;
     [SerializeField] private TMP_Text _weightText;
     [SerializeField] private TMP_Text _powerText;
+    [SerializeField] private Button _animButton;
 
     private int _headIndex, _bodyIndex, _legsIndex;
 
@@ -34,6 +37,7 @@ public class RobotUI : MonoBehaviour
         _legsIndex = (_legsIndex + 1) % _builder.GetLegs().Count;
         _builder.Model.SetLegs(_builder.GetLegs()[_legsIndex]);
     }
+
     //Methods to change color
     
     public void SetHeadRed() => _builder.Model.SetHeadColor(Color.red); //head
@@ -45,4 +49,6 @@ public class RobotUI : MonoBehaviour
     public void SetLegsRed() => _builder.Model.SetLegsColor(Color.red); //legs
     public void SetLegsBlue() => _builder.Model.SetLegsColor(Color.blue);
     public void SetLegsGreen() => _builder.Model.SetLegsColor(Color.green);
+
+    public void OnTestButton() => _builder.Model.TriggerTest();
 }
